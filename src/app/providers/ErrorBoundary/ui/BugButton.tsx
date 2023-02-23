@@ -15,6 +15,7 @@ export const BugButton: FC<BugButtonProps> = ({ className }) => {
     }, [error]);
 
     return (
+        // eslint-disable-next-line i18next/no-literal-string
         <Button onClick={onToggleError}>
             throw Error
         </Button>

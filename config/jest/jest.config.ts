@@ -1,3 +1,8 @@
+/*
+ * For a detailed explanation regarding each configuration property and type check, visit:
+ * https://jestjs.io/docs/configuration
+ */
+
 import path from 'path';
 
 export default {
@@ -93,7 +98,7 @@ export default {
     // notifyMode: "failure-change",
 
     // A preset that is used as a base for Jest's configuration
-    preset: 'ts-jest',
+    // preset: undefined,
 
     // Run tests from one or more projects
     // projects: undefined,
@@ -166,9 +171,7 @@ export default {
     // timers: "real",
 
     // A map from regular expressions to paths to transformers
-    transform: {
-        '^.+\\.(js|ts)$': 'ts-jest',
-    },
+    // transform: undefined,
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [
@@ -180,7 +183,7 @@ export default {
     // unmockedModulePathPatterns: undefined,
 
     // Indicates whether each individual test should be reported during the run
-    // verbose: true,
+    // verbose: undefined,
 
     // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
     // watchPathIgnorePatterns: [],
