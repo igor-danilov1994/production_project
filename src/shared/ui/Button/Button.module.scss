@@ -11,8 +11,16 @@
   border: none;
 }
 
+.clearInverted {
+  padding: 0;
+  background: none;
+  outline: none;
+  border: none;
+  color: var(--inverted-primary-color);
+}
+
 .outline {
-  border: 1px solid var(--pimary-color);
+  border: 1px solid var(--primary-color);
   color: var(--pimary-color);
   background: none;
 }
