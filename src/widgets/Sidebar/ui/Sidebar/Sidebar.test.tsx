@@ -1,7 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react';
 
 import { Sidebar } from 'widgets/Sidebar/ui/Sidebar/Sidebar';
-// eslint-disable-next-line max-len
 import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 
 describe('Sidebar', () => {

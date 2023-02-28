@@ -12,21 +12,21 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "storybook": "start-storybook -p 6006 -c ./config/storybook",
-    "storybook:build": "build-storybook -c ./config/storybook",
-    "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui": "npx loki test",
+    "test:ui:ok": "npx loki approve",
+    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
+    "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
-    "test:ui:ok": "npx loki approve",
-    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static"
+    "storybook": "start-storybook -p 6006 -c ./config/storybook",
+    "storybook:build": "build-storybook -c ./config/storybook"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@babel/preset-env": "^7.20.2",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "@storybook/addon-actions": "^6.4.19",
@@ -50,7 +50,6 @@
     "@types/webpack-dev-server": "^4.7.2",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
-    "babel-jest": "^29.4.3",
     "babel-loader": "^8.2.3",
     "babel-plugin-i18next-extract": "^0.8.3",
     "css-loader": "^6.6.0",
@@ -65,9 +64,9 @@
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
-    "reg-cli": "^0.17.6",
     "loki": "^0.28.1",
     "mini-css-extract-plugin": "^2.5.3",
+    "reg-cli": "^0.17.6",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
@@ -94,12 +93,12 @@
   "loki": {
     "configurations": {
       "chrome.laptop": {
-        "target": "chrome.app",
+        "target": "chrome.docker",
         "width": 1366,
         "height": 768
       },
       "chrome.iphone7": {
-        "target": "chrome.app",
+        "target": "chrome.docker",
         "preset": "iPhone 7"
       }
     }
