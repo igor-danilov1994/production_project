@@ -55,6 +55,9 @@ module.exports = {
         'max-len': ['error', {ignoreComments: true, code: 100}],
         "react-hooks/rules-of-hooks": "error",
         "no-param-reassign": "off",
+        "react/prop-types": "off",
+        "jsx-a11y/no-autofocus": "off",
+        "no-unused-expressions": "off",
         "react-hooks/exhaustive-deps": "error"
     },
     globals: {
