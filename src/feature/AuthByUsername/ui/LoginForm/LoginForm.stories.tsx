@@ -11,5 +11,5 @@ export default {
 
 const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
 
-export const LoginFormComponent = Template.bind({});
-LoginFormComponent.args = {};
+export const Primary = Template.bind({});
+Primary.args = {};
