@@ -9,5 +9,8 @@
   "Ошибка": "Error",
   "Перезагрузить страницу": "Reload page",
   "Увеличение": "Increment",
-  "Уменьшение": "Decrement"
+  "Уменьшение": "Decrement",
+  "Форма авторизации": "Authorization form",
+  "Войти": "LogIn",
+  "Выйти": "LogOut"
 }

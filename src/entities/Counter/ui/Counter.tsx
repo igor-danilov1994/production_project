@@ -13,6 +13,7 @@ export const Counter: FC<CounterProps> = () => {
     const dispatch = useDispatch();
     const counterValue = useSelector(getCounterValue);
     const { t } = useTranslation();
+
     const increment = () => {
         dispatch(counterActions.increment());
     };
