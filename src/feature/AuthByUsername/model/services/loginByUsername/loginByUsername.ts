@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 
-interface loginByUserNameProps {
+export interface loginByUserNameProps {
     username: string,
     password: string
 }
@@ -16,6 +16,10 @@ export const loginByUsername = createAsyncThunk<User, loginByUserNameProps>(
 
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
             thankApi.dispatch(userActions.setUserData(response.data));
+
+            if (!response.data) {
+                throw new Error();
+            }
 
             return response.data;
         } catch (e) {
