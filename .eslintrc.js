@@ -44,6 +44,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'no-use-before-define': 'off',
+        'no-undef': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'i18next/no-literal-string': [
             'error',
@@ -62,6 +63,7 @@ module.exports = {
     },
     globals: {
         __IS_DEV__: true,
+        __API__: true,
     },
     overrides: [
         {

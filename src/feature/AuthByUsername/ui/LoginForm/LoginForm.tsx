@@ -18,7 +18,7 @@ import { getLoginError } from '../../model/selectors/getLoginError/getLoginError
 
 export interface LoginFormProps {
     className?: string;
-    onSuccess: () => void
+    onSuccess?: () => void
 }
 
 const initialReducer: ReducersList = {
@@ -45,7 +45,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onSuccess }) => {
         const result = await dispatch(loginByUsername({ username, password }));
 
         if (result.meta.requestStatus === 'fulfilled') {
-            onSuccess();
+            onSuccess?.();
         }
     }, [onSuccess, dispatch, password, username]);
 

@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes, FC } from 'react';
 
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+// @ts-ignore
 import cls from './Button.module.scss';
 
 export enum ButtonTheme {
@@ -27,7 +28,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<ButtonProps> = (props) => {
     const {
-        theme,
+        theme = ButtonTheme.OUTLINE,
         className,
         children,
         square,
@@ -36,7 +37,7 @@ export const Button: FC<ButtonProps> = (props) => {
         ...otherProps
     } = props;
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [cls[theme]]: true,
         [cls.square]: square,
         [cls[size]]: true,
