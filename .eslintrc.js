@@ -45,14 +45,8 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'off',
         'no-use-before-define': 'off',
         'no-undef': 'off',
+        'i18next/no-literal-string': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
-        'i18next/no-literal-string': [
-            'error',
-            {
-                markupOnly: true,
-                ignoreAttribute: ['data-testid', 'to'],
-            },
-        ],
         'max-len': ['error', {ignoreComments: true, code: 120}],
         "react-hooks/rules-of-hooks": "error",
         "no-param-reassign": "off",

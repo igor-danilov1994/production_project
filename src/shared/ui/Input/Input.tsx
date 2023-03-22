@@ -1,12 +1,17 @@
 import {
     FC, InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
 interface InputProps extends HTMLInputProps {
     value?: string;
     onChange?: (value: string) => void;
+    readonly?: boolean,
+    className?: string,
+    label?: string
 }
 
 export const Input: FC<InputProps> = memo((props) => {
@@ -15,6 +20,10 @@ export const Input: FC<InputProps> = memo((props) => {
         value,
         onChange,
         autoFocus,
+        readonly,
+        className,
+        placeholder,
+        label,
         ...otherProps
     } = props;
 
@@ -32,8 +41,14 @@ export const Input: FC<InputProps> = memo((props) => {
         onChange?.(value);
     };
 
+    const mods: Mods = {
+        [cls.readonly]: readonly,
+    };
+
     return (
-        <div>
+        <div className={classNames(cls.InputWrapper, mods, [className])}>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            {label && <label className={cls.label}>{label}</label>}
             <input
                 ref={inputRef}
                 autoFocus={isAutoFocus}
@@ -41,6 +56,8 @@ export const Input: FC<InputProps> = memo((props) => {
                 value={value}
                 onChange={(e) => onChangeHandler(e.target.value)}
                 {...otherProps}
+                readOnly={readonly}
+                placeholder={placeholder}
             />
         </div>
     );
