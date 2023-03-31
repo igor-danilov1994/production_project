@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import AvatarForStorybook from './forStorybook.jpg';
+import AvatarForStorybook from '../../assets/test/forStorybook.jpg';
 
 import { Avatar } from './Avatar';
 

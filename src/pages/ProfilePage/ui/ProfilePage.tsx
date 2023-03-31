@@ -1,5 +1,4 @@
 import { FC, useCallback, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -7,14 +6,16 @@ import { DynamicModelLoader, ReducersList } from 'shared/lib/compoents/DynamicMo
 import {
     fetchProfileData,
     getProfileError,
+    getProfileForm,
     getProfileLoading,
+    getProfileReadonly,
+    getValidateProfileError,
     profileActions,
     ProfileCard,
     profileReducer,
 } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { getProfileReadonly } from 'entities/Profile/model/selectors/getProfileReadonly/getProfileReadonly';
-import { getProfileForm } from 'entities/Profile/model/selectors/getProfileForm/getProfileForm';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -27,15 +28,17 @@ const initialReducer: ReducersList = {
 };
 
 const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
-    const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const profile = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
+    const validateErrors = useSelector(getValidateProfileError);
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     const onChangeFirstName = useCallback((value: string) => {
@@ -66,6 +69,9 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
         <DynamicModelLoader reducers={initialReducer} removeAfterUnmount>
             <div className={classNames(cls.ProfilePage, {}, [className])}>
                 <ProfilePageHeader isLoading={isLoading} readonly={readonly} />
+                {validateErrors?.map((error) => (
+                    <Text key={error} theme={TextTheme.ERROR} text={error} />
+                ))}
                 <ProfileCard
                     profile={profile}
                     isLoading={isLoading}

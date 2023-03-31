@@ -1,4 +1,5 @@
 import { Country, Currency } from 'shared/const/common';
+import { ValidateProfileError } from 'entities/Profile/model/services/validateProfileDate/validateProfileDate';
 
 export interface Profile {
     first?: string,
@@ -14,7 +15,8 @@ export interface Profile {
 export interface ProfileSchema {
     profile?: Profile;
     form?: Profile;
-    isLoading: boolean;
+    isLoading?: boolean;
     error?: string;
-    readonly: boolean
+    readonly?: boolean;
+    validateError?: ValidateProfileError[]
 }
